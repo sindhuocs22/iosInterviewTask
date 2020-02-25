@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  ios Task
+
+  Created by INFOSYS on 20/02/20.
+  Copyright © 2020 INFOSYS. All rights reserved.
+*/
+
+"navigation_title" = "About Canada";
+"no_data" = "No Data Found";
+"no_network" = "No Network Available";
+"response_error" = "Error in Network connection";
