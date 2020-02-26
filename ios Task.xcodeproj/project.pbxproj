@@ -17,12 +17,12 @@
 		2F4A465523FCF71600847090 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A465423FCF71600847090 /* Constant.swift */; };
 		2F4A465723FD0D6E00847090 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A465623FD0D6E00847090 /* Themes.swift */; };
 		2F4A465923FD101C00847090 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A465823FD101C00847090 /* Reachability.swift */; };
-		2F4A465C23FD281400847090 /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A465B23FD281400847090 /* CountryList.swift */; };
 		2F4A465F23FD28AC00847090 /* CountryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A465E23FD28AC00847090 /* CountryListCell.swift */; };
 		2FAA4A5F23FBEF4000B8C4A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA4A5E23FBEF4000B8C4A1 /* AppDelegate.swift */; };
 		2FAA4A6623FBEF4100B8C4A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA4A6523FBEF4100B8C4A1 /* Assets.xcassets */; };
 		2FAA4A6923FBEF4100B8C4A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FAA4A6723FBEF4100B8C4A1 /* LaunchScreen.storyboard */; };
 		2FAA4A7423FBEF4100B8C4A1 /* ios_TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA4A7323FBEF4100B8C4A1 /* ios_TaskTests.swift */; };
+		2FC5C36024069B44005238CA /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5C35F24069B44005238CA /* CountryList.swift */; };
 		6D1AFCFF61348D173E04D81A /* Pods_ios_TaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3378D518823F54232B7704D /* Pods_ios_TaskTests.framework */; };
 		E9852BD47A22923B835D042F /* Pods_ios_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BE47EBD0AB316BB054872C /* Pods_ios_Task.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,6 @@
 		2F4A465423FCF71600847090 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2F4A465623FD0D6E00847090 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		2F4A465823FD101C00847090 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		2F4A465B23FD281400847090 /* CountryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		2F4A465E23FD28AC00847090 /* CountryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListCell.swift; sourceTree = "<group>"; };
 		2FAA4A5B23FBEF4000B8C4A1 /* ios Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA4A5E23FBEF4000B8C4A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		2FAA4A6F23FBEF4100B8C4A1 /* ios TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA4A7323FBEF4100B8C4A1 /* ios_TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_TaskTests.swift; sourceTree = "<group>"; };
 		2FAA4A7523FBEF4100B8C4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FC5C35F24069B44005238CA /* CountryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
 		5B4B6DB5A075B77673061575 /* Pods-ios TaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios TaskTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios TaskTests/Pods-ios TaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		6F8592143E0B6C57FDD0AEB2 /* Pods-ios Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios Task.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios Task/Pods-ios Task.release.xcconfig"; sourceTree = "<group>"; };
 		AEDFC4555025E7C193F08EBB /* Pods-ios TaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios TaskTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios TaskTests/Pods-ios TaskTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				2F4A465D23FD285300847090 /* CountryListCell */,
-				2F4A465B23FD281400847090 /* CountryList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +170,7 @@
 				2F4A464823FCF2FF00847090 /* Model */,
 				2F4A464923FCF30D00847090 /* ViewModel */,
 				2F4A465A23FD27FA00847090 /* View */,
+				2FC5C35E24069AD5005238CA /* Controller */,
 				2F4A465123FCF6A000847090 /* Common */,
 				2FAA4A6523FBEF4100B8C4A1 /* Assets.xcassets */,
 				2FAA4A6723FBEF4100B8C4A1 /* LaunchScreen.storyboard */,
@@ -187,6 +187,14 @@
 				2FAA4A7523FBEF4100B8C4A1 /* Info.plist */,
 			);
 			path = "ios TaskTests";
+			sourceTree = "<group>";
+		};
+		2FC5C35E24069AD5005238CA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FC5C35F24069B44005238CA /* CountryList.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		5CA313DF1F6B2545C2E4D513 /* Pods */ = {
@@ -397,11 +405,11 @@
 				2FAA4A5F23FBEF4000B8C4A1 /* AppDelegate.swift in Sources */,
 				2F4A465023FCF51A00847090 /* CountryListVM.swift in Sources */,
 				2F4A464E23FCF50600847090 /* CountryListModel.swift in Sources */,
-				2F4A465C23FD281400847090 /* CountryList.swift in Sources */,
 				2F441F3023FE4BBF00AD1F31 /* Extensions.swift in Sources */,
 				2F4A465323FCF6D200847090 /* URLHandler.swift in Sources */,
 				2F4A465923FD101C00847090 /* Reachability.swift in Sources */,
 				2F15601F2403FFF90047AD04 /* CountryListTableDataSource.swift in Sources */,
+				2FC5C36024069B44005238CA /* CountryList.swift in Sources */,
 				2F4A465523FCF71600847090 /* Constant.swift in Sources */,
 				2F4A465F23FD28AC00847090 /* CountryListCell.swift in Sources */,
 				2F15601D2403FFDC0047AD04 /* CountryListTableDelegate.swift in Sources */,

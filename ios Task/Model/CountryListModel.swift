@@ -15,7 +15,6 @@ struct CountryModel: Codable {
 
     case title
     case rows
-    
   }
 
   init(from decoder: Decoder) throws {
