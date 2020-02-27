@@ -25,5 +25,53 @@ class IOSTaskTests: XCTestCase {
     let vc = CountryList()
     XCTAssertTrue(vc.tableCountry.dataSource?.isEqual(vc.countryListDele) ?? true)
   }
-
+  // MARK: - Checks model
+  //Below Method checks whether API throws error
+  func testJsonResponseError() {
+    guard let url = URL(string: Constants.Baseurl) else { return }
+    let errorExpectation = expectation(description: "error")
+    let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
+      guard let dataResponse = data,
+        error == nil else {
+          errorExpectation.fulfill()
+          print(error?.localizedDescription ?? "Response Error")
+          return }
+      do {
+        //here dataResponse received from a network request
+        if let value = String(data: dataResponse, encoding: String.Encoding.ascii) {
+          if let jsonData = value.data(using: String.Encoding.utf8) {
+            _ = try JSONDecoder().decode(CountryModel.self, from: jsonData)
+          }
+        }
+      } catch let parsingError {
+        print("Error", parsingError)
+      }
+    }
+    task.resume()
+    waitForExpectations(timeout: 1) { (_) in
+    }
+}
+  //Below methods checks json response matches with dummy data
+  func testDecodableDatawithDummyValues() {
+    guard let url = URL(string: Constants.Baseurl) else { return }
+    let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
+      guard let dataResponse = data,
+        error == nil else {
+          print(error?.localizedDescription ?? "Response Error")
+          return }
+      do {
+        //here dataResponse received from a network request
+        if let value = String(data: dataResponse, encoding: String.Encoding.ascii) {
+          if let jsonData = value.data(using: String.Encoding.utf8) {
+            let decodedData = try JSONDecoder().decode(CountryModel.self, from: jsonData)
+            XCTAssertEqual(decodedData.title, "About Canada")
+            XCTAssertLessThan(decodedData.rows?.count ?? 0, 0)
+          }
+        }
+      } catch let parsingError {
+        print("Error", parsingError)
+      }
+    }
+    task.resume()
+  }
 }
