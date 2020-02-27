@@ -26,31 +26,6 @@ class IOSTaskTests: XCTestCase {
     XCTAssertTrue(vc.tableCountry.dataSource?.isEqual(vc.countryListDele) ?? true)
   }
   // MARK: - Checks model
-  //Below Method checks whether API throws error
-  func testJsonResponseError() {
-    guard let url = URL(string: Constants.Baseurl) else { return }
-    let errorExpectation = expectation(description: "error")
-    let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
-      guard let dataResponse = data,
-        error == nil else {
-          errorExpectation.fulfill()
-          print(error?.localizedDescription ?? "Response Error")
-          return }
-      do {
-        //here dataResponse received from a network request
-        if let value = String(data: dataResponse, encoding: String.Encoding.ascii) {
-          if let jsonData = value.data(using: String.Encoding.utf8) {
-            _ = try JSONDecoder().decode(CountryModel.self, from: jsonData)
-          }
-        }
-      } catch let parsingError {
-        print("Error", parsingError)
-      }
-    }
-    task.resume()
-    waitForExpectations(timeout: 1) { (_) in
-    }
-}
   //Below methods checks json response matches with dummy data
   func testDecodableDatawithDummyValues() {
     guard let url = URL(string: Constants.Baseurl) else { return }
@@ -73,5 +48,25 @@ class IOSTaskTests: XCTestCase {
       }
     }
     task.resume()
+  }
+  //Below method checks users availbel in that model
+  func testHasUsers() {
+    let viewModel = UsersModel(users: ["aaa", "bbb", "ccc"], dictionary: UserDetails.init(name: "", age: "", designation: ""))
+    XCTAssertTrue(viewModel.hasUsers)
+  }
+  //Below method checks user count
+  func testEmptyListOfUsers() {
+    let viewModel = UsersModel(users: ["aaa", "bbb", "ccc"], dictionary: UserDetails.init(name: "", age: "", designation: ""))
+    XCTAssert(viewModel.users.count != 0)
+    XCTAssertTrue(viewModel.users.count != 0)
+    XCTAssertEqual(viewModel.users.count, 3)
+  }
+  //Below method checks user details same as model defined value
+  func testDecoding() throws {
+
+      let user = UsersModel(users: [""], dictionary: UserDetails.init(name: "aaa", age: "25", designation: "software engineer"))
+      XCTAssertEqual(user.dictionary.name, "aaa")
+      XCTAssertEqual(user.dictionary.age, "25")
+      XCTAssertEqual(user.dictionary.designation, "software engineer")
   }
 }
