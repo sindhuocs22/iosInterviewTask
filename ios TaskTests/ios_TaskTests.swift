@@ -49,24 +49,4 @@ class IOSTaskTests: XCTestCase {
     }
     task.resume()
   }
-  //Below method checks users availbel in that model
-  func testHasUsers() {
-    let viewModel = UsersModel(users: ["aaa", "bbb", "ccc"], dictionary: UserDetails.init(name: "", age: "", designation: ""))
-    XCTAssertTrue(viewModel.hasUsers)
-  }
-  //Below method checks user count
-  func testEmptyListOfUsers() {
-    let viewModel = UsersModel(users: ["aaa", "bbb", "ccc"], dictionary: UserDetails.init(name: "", age: "", designation: ""))
-    XCTAssert(viewModel.users.count != 0)
-    XCTAssertTrue(viewModel.users.count != 0)
-    XCTAssertEqual(viewModel.users.count, 3)
-  }
-  //Below method checks user details same as model defined value
-  func testDecoding() throws {
-
-      let user = UsersModel(users: [""], dictionary: UserDetails.init(name: "aaa", age: "25", designation: "software engineer"))
-      XCTAssertEqual(user.dictionary.name, "aaa")
-      XCTAssertEqual(user.dictionary.age, "25")
-      XCTAssertEqual(user.dictionary.designation, "software engineer")
-  }
 }

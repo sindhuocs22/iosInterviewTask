@@ -44,16 +44,3 @@ struct Rows: Codable {
   }
 
 }
-// MARK: - User Model
-struct UsersModel {
-  let users: [String]
-  let dictionary : UserDetails
-  var hasUsers: Bool {
-    return !users.isEmpty
-  }
-}
-struct UserDetails {
-  var name : String
-  var age  : String
-  var designation :String
-}
