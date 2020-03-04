@@ -102,6 +102,7 @@ extension CountryList:UITableViewDataSource,UITableViewDelegate {
       let imageUrl = "\(object.imageHref ?? "")"
       cell?.labelTitle.text = title
       cell?.labelDescription.text = description
+      cell?.imageIcon.sd_imageIndicator = SDWebImageActivityIndicator.gray
       cell?.imageIcon.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "placeholder"))
     }
     return cell!
