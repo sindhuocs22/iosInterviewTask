@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: protocol created
-protocol countryListViewModelDelegate: class {
+protocol CountryListViewModelDelegate: class {
 
   func reloadData(array: [Rows]?)
   func updateNavigationTitle(title: String)
@@ -18,7 +18,7 @@ protocol countryListViewModelDelegate: class {
 
 class CountryListVM: NSObject {
 
-  weak var delegate: countryListViewModelDelegate?
+  weak var delegate: CountryListViewModelDelegate?
 
   func sendRequestToGetCountryData(parentController: UIViewController, table: UITableView) {
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountryList: UIViewController, countryListViewModelDelegate {
+class CountryList: UIViewController, CountryListViewModelDelegate {
 
   var tableCountry = UITableView()
   var countryListViewModel = CountryListVM()
