@@ -13,6 +13,8 @@ protocol CountryListViewModelDelegate: class {
 
   func reloadData(array: [Rows]?)
   func updateNavigationTitle(title: String)
+  func showNetworkError()
+  func showResponseError()
 
 }
 
@@ -20,11 +22,15 @@ class CountryListVM: NSObject {
 
   weak var delegate: CountryListViewModelDelegate?
 
-  func sendRequestToGetCountryData(parentController: UIViewController, table: UITableView) {
+  func sendRequestToGetCountryData() {
 
     //API Call
 
-    URLHandler.sharedInstance.sendRequestToGetAPICall(parentController: parentController) { (data) in
+    //Below line checks whether Network is available or not
+
+    if Reachability.isConnectedToNetwork() {
+
+    URLHandler.sharedInstance.sendRequestToGetAPICall { (data,_) in
 
       //Here data is Encoded values with binary data, below method used to decode the original json by using Model class
       if let responseData = data {
@@ -41,11 +47,15 @@ class CountryListVM: NSObject {
       } else {
         DispatchQueue.main.async {
           //if response is failure error will show
-          Themes.sharedInstance.showResponseErrorAlert(controller: parentController)
+          self.delegate?.showResponseError()
         }
       }
     }
 
-  }
+  } else {
 
+      //Shows error alert if no network availble
+      self.delegate?.showNetworkError()
+    }
+  }
 }

@@ -26,27 +26,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigationController = UINavigationController(rootViewController: CountryList())
     navigationController.navigationBar.barTintColor = UIColor.white
     window?.rootViewController = navigationController
-
   }
-
-  func applicationWillResignActive(_ application: UIApplication) {
-
-  }
-
-  func applicationDidEnterBackground(_ application: UIApplication) {
-
-  }
-
-  func applicationWillEnterForeground(_ application: UIApplication) {
-
-  }
-
-  func applicationDidBecomeActive(_ application: UIApplication) {
-
-  }
-
-  func applicationWillTerminate(_ application: UIApplication) {
-
-  }
-
 }

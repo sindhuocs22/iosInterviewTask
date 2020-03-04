@@ -1,20 +1,26 @@
 PODS:
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
   - SVProgressHUD (2.2.5)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - SDWebImage
   - SVProgressHUD
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - SDWebImage
     - SVProgressHUD
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a5a67f8d4b9e752a80459cf15698358f4533258b
+PODFILE CHECKSUM: 16f8b17a534999d99acdf957366f96465c7682d8
 
 COCOAPODS: 1.5.3

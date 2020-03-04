@@ -94,19 +94,4 @@ class CountryListCell: UITableViewCell {
 
   }
 
-  // Called in cellForRowAt / cellForItemAt
-  func configureWith(urlString: String) {
-    if task == nil {
-      // Ignore calls when reloading
-      task = imageIcon.downloadImage(from: urlString) // Initially images get downloaded and stored to cache memory,whenever table gets reloaded images will be taken from cache.
-    }
-  }
-  override func prepareForReuse() {
-    super.prepareForReuse()
-
-    //it will call whenever cell gets allocated
-    task?.cancel()
-    task = nil
-    imageIcon.image = nil
-  }
 }

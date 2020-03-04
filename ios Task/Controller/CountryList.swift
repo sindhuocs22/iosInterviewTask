@@ -7,14 +7,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CountryList: UIViewController, CountryListViewModelDelegate {
 
   var tableCountry = UITableView()
   var countryListViewModel = CountryListVM()
-  var countryListDS = CountryListTableDataSource()
-  var countryListDele = CountryListTableDelegate()
-
+  var arrayCountryData: [Rows]?
   var refreshControl = UIRefreshControl()
 
   override func viewDidLoad() {
@@ -33,7 +32,7 @@ class CountryList: UIViewController, CountryListViewModelDelegate {
     refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
     tableCountry.addSubview(refreshControl)
     //API calls in ViewModel Class
-    countryListViewModel.sendRequestToGetCountryData(parentController: self, table: self.tableCountry)
+    countryListViewModel.sendRequestToGetCountryData()
 
   }
   func createSubViews() {
@@ -42,8 +41,8 @@ class CountryList: UIViewController, CountryListViewModelDelegate {
     tableCountry.translatesAutoresizingMaskIntoConstraints = false
     tableCountry.estimatedRowHeight = 80
     tableCountry.separatorStyle = .none
-    tableCountry.delegate = countryListDele
-    tableCountry.dataSource = countryListDS
+    tableCountry.delegate = self
+    tableCountry.dataSource = self
     self.view.addSubview(tableCountry)
   }
   func setupConstraints() {
@@ -57,7 +56,7 @@ class CountryList: UIViewController, CountryListViewModelDelegate {
   // MARK: Custom protocols
   func reloadData(array: [Rows]?) {
     //Receiving values from viewmodel class and passing to datasource class
-    self.countryListDS.arrayCountryData = array
+    self.arrayCountryData = array
     self.tableCountry.reloadData()
     self.refreshControl.endRefreshing()
   }
@@ -65,10 +64,46 @@ class CountryList: UIViewController, CountryListViewModelDelegate {
     //after getting API response navigation title gets updated
     self.navigationItem.title = title
   }
+  func showResponseError() {
+    Themes.sharedInstance.showResponseErrorAlert(controller: self)
+  }
+  func showNetworkError() {
+    Themes.sharedInstance.showNetworkErrorAlert(controller: self)
+  }
   // MARK: Actions
   @objc func refresh(sender: AnyObject) {
 
     //Refresh method to initiate API call
-    countryListViewModel.sendRequestToGetCountryData(parentController: self, table: self.tableCountry)
+    countryListViewModel.sendRequestToGetCountryData()
+  }
+}
+
+extension CountryList:UITableViewDataSource,UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if arrayCountryData?.count == 0 {
+      //Display's No Data view if table is empty
+      tableView.setEmptyMessage(NSLocalizedString("no_data", comment: ""))
+    } else {
+      //Display's tableview with Data
+      tableView.restore()
+    }
+    return arrayCountryData?.count ?? 0
+  }
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    var cell: CountryListCell? = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CountryListCell
+    cell?.selectionStyle = .none
+    if cell == nil {
+      cell = CountryListCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell")
+    }
+    // Below method for urwrapping nil values
+    if let object = arrayCountryData?[indexPath.row] {
+      let title = "\(object.title ?? "")"
+      let description = "\(object.description ?? "")"
+      let imageUrl = "\(object.imageHref ?? "")"
+      cell?.labelTitle.text = title
+      cell?.labelDescription.text = description
+      cell?.imageIcon.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "placeholder"))
+    }
+    return cell!
   }
 }

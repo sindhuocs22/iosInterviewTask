@@ -14,11 +14,9 @@ class URLHandler: NSObject {
 
   static let sharedInstance = URLHandler()
 
-  func sendRequestToGetAPICall(parentController: UIViewController, _ completion: @escaping (_ data: Data?) -> Void) {
+  func sendRequestToGetAPICall(_ completion: @escaping (_ data: Data?,_ error : Error?) -> Void) {
 
     //Below line checks whether Network is available or not
-
-    if Reachability.isConnectedToNetwork() {
 
       //Loader
       Themes.sharedInstance.showProgresss()
@@ -28,36 +26,24 @@ class URLHandler: NSObject {
 
       guard let url = URL(string: Constants.Baseurl) else { return }
 
-      URLSession.shared.dataTask(with: url) { (data, _, _) in
+      URLSession.shared.dataTask(with: url) { (data, _, error) in
 
         // Functions gives binary data from json url using urlSession
 
         Themes.sharedInstance.dismissProgress()
-
         if let datas = data {
 
           if let value = String(data: datas, encoding: String.Encoding.ascii) {
 
             if let jsonData = value.data(using: String.Encoding.utf8) {
 
-              completion(jsonData)
+              completion(jsonData,error)
             }
           }
 
         } else {
-
-          DispatchQueue.main.async {
-            //shows error alert when response is error
-            Themes.sharedInstance.showResponseErrorAlert(controller: parentController)
-          }
+          completion(data,error)
         }
         }.resume()
-    } else {
-
-      //Shows error alert if no network availble
-      Themes.sharedInstance.showNetworkErrorAlert(controller: parentController)
-
-    }
-
   }
 }

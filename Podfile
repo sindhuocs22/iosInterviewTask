@@ -8,6 +8,7 @@ target 'ios Task' do
   # Pods for ios Task
   pod 'SVProgressHUD', :inhibit_warnings => true
   pod 'Toast-Swift', '~> 5.0.1', :inhibit_warnings => true
+  pod 'SDWebImage'
 
 # ignore all warnings from all dependencies
 inhibit_all_warnings!
@@ -21,9 +22,5 @@ inhibit_all_warnings!
     # Pods for testing
   end
 
-  target 'ios TaskUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+  
 end

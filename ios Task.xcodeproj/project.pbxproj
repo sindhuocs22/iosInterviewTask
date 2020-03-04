@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F15601D2403FFDC0047AD04 /* CountryListTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15601C2403FFDC0047AD04 /* CountryListTableDelegate.swift */; };
-		2F15601F2403FFF90047AD04 /* CountryListTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F15601E2403FFF90047AD04 /* CountryListTableDataSource.swift */; };
 		2F441F3023FE4BBF00AD1F31 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F441F2F23FE4BBF00AD1F31 /* Extensions.swift */; };
 		2F441F3C23FE75F200AD1F31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F441F3E23FE75F200AD1F31 /* Localizable.strings */; };
 		2F4A464E23FCF50600847090 /* CountryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A464D23FCF50600847090 /* CountryListModel.swift */; };
@@ -39,8 +37,6 @@
 
 /* Begin PBXFileReference section */
 		24BE47EBD0AB316BB054872C /* Pods_ios_Task.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_Task.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F15601C2403FFDC0047AD04 /* CountryListTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableDelegate.swift; sourceTree = "<group>"; };
-		2F15601E2403FFF90047AD04 /* CountryListTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableDataSource.swift; sourceTree = "<group>"; };
 		2F441F2F23FE4BBF00AD1F31 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2F441F3D23FE75F200AD1F31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2F4A464D23FCF50600847090 /* CountryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListModel.swift; sourceTree = "<group>"; };
@@ -89,15 +85,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F15601B2403FFB90047AD04 /* Properties */ = {
-			isa = PBXGroup;
-			children = (
-				2F15601C2403FFDC0047AD04 /* CountryListTableDelegate.swift */,
-				2F15601E2403FFF90047AD04 /* CountryListTableDataSource.swift */,
-			);
-			path = Properties;
-			sourceTree = "<group>";
-		};
 		2F4A464823FCF2FF00847090 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +96,6 @@
 		2F4A464923FCF30D00847090 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2F15601B2403FFB90047AD04 /* Properties */,
 				2F4A464F23FCF51A00847090 /* CountryListVM.swift */,
 			);
 			path = ViewModel;
@@ -326,11 +312,7 @@
 			buildActionMask = 12;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -381,11 +363,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios Task/Pods-ios Task-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
@@ -408,11 +392,9 @@
 				2F441F3023FE4BBF00AD1F31 /* Extensions.swift in Sources */,
 				2F4A465323FCF6D200847090 /* URLHandler.swift in Sources */,
 				2F4A465923FD101C00847090 /* Reachability.swift in Sources */,
-				2F15601F2403FFF90047AD04 /* CountryListTableDataSource.swift in Sources */,
 				2FC5C36024069B44005238CA /* CountryList.swift in Sources */,
 				2F4A465523FCF71600847090 /* Constant.swift in Sources */,
 				2F4A465F23FD28AC00847090 /* CountryListCell.swift in Sources */,
-				2F15601D2403FFDC0047AD04 /* CountryListTableDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
