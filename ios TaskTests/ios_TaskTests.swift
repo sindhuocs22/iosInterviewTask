@@ -18,12 +18,12 @@ class IOSTaskTests: XCTestCase {
   }
   func testLoadTableViewWithDataSource() {
     let vc = CountryList()
-    XCTAssertTrue(vc.tableCountry.dataSource?.isEqual(vc.countryListDS) ?? true)
+    XCTAssertTrue(vc.tableCountry.dataSource?.isEqual(vc) ?? true)
   }
 
   func testLoadTableViewWithDelegate() {
     let vc = CountryList()
-    XCTAssertTrue(vc.tableCountry.dataSource?.isEqual(vc.countryListDele) ?? true)
+    XCTAssertTrue(vc.tableCountry.dataSource?.isEqual(vc) ?? true)
   }
   // MARK: - Checks model
   //Below methods checks json response matches with dummy data
